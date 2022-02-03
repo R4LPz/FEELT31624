@@ -1,8 +1,10 @@
-const db = require('../config/database')
-const Sequelize = require('sequelize')
+const { Sequelize, Model } = require('sequelize')
+const sequelize = require('../config/database')
 
 
-const Flight = db.define('flights', {
+class Flight extends Model{}
+
+Flight.init({
     id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -17,6 +19,6 @@ const Flight = db.define('flights', {
         type: Sequelize.DECIMAL(8,2),
         allowNull: false
     }
-})
+},{ sequelize })
 
-module.exports = Flight
+module.exports = Flight 

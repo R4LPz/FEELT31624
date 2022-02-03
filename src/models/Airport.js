@@ -1,7 +1,10 @@
-const db = require('../config/database')
-const Sequelize = require('sequelize')
+const { Sequelize, Model } = require('sequelize')
+const sequelize = require('../config/database')
 
-const Airport = db.define('airports', {
+
+class Airport extends Model{}
+
+Airport.init({
     id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -20,6 +23,6 @@ const Airport = db.define('airports', {
         type: Sequelize.STRING,
         allowNull: false
     }
-})
+}, { sequelize })
 
 module.exports = Airport

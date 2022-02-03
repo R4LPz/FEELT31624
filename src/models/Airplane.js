@@ -1,7 +1,10 @@
-const Sequelize  = require('sequelize')
-const db = require('../config/database')
+const { Sequelize, Model }  = require('sequelize')
+const sequelize = require('../config/database')
+
+
+class Airplane extends Model{}
  
-const Airplane = db.define('airplanes', {
+Airplane.init({
     id:{
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -22,6 +25,6 @@ const Airplane = db.define('airplanes', {
         type: Sequelize.INTEGER,
         allowNull: false
     }
-})
+}, { sequelize })
 
 module.exports = Airplane;

@@ -1,8 +1,10 @@
-const Sequelize = require('sequelize')
-const db = require('../config/database')
+const { Sequelize, Model} = require('sequelize')
+const sequelize = require('../config/database')
 
 
-const Airline = db.define('airlines',{
+class Airline extends Model{}
+
+Airline.init({
     id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -17,6 +19,6 @@ const Airline = db.define('airlines',{
         type: Sequelize.BIGINT,
         allowNull: false
     }
-})
+}, { sequelize })
 
 module.exports = Airline
