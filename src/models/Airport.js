@@ -1,28 +1,25 @@
-const Sequelize  = require('sequelize')
 const db = require('../config/database')
- 
-const User = db.define('users', {
+const Sequelize = require('sequelize')
+
+const Airport = db.define('airports', {
     id:{
         type: Sequelize.INTEGER,
-        allowNull: false,
         autoIncrement: true,
+        allowNull: false,
         primaryKey: true
     },
-    name: {
+    cnpj:{
+        type: Sequelize.BIGINT,
+        allowNull: false
+    },
+    name:{
         type: Sequelize.STRING,
         allowNull: false
     },
-    email:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    password:{
+    location:{
         type: Sequelize.STRING,
         allowNull: false
     }
-},{
-    createdAt: false,
-    updatedAt: false
 })
 
-module.exports = User;
+module.exports = Airport

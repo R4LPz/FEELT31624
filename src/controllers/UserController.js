@@ -1,11 +1,11 @@
 const User = require('../models/User')
 
 exports.createUser = async (req,res)=>{
-    const {email, password} = req.body
+    const {name, email, password} = req.body
     const userExists = await User.findOne({where: {email: email}})
 
     //passar validação para service
-    if(!email || !password){
+    if(!name || !email || !password){
         return res.status(400).send("Dados Inválidos")
     }
     if(userExists){
@@ -13,6 +13,7 @@ exports.createUser = async (req,res)=>{
     }
 
     const newUser = User.create({
+        name: name,
         email: email,
         password: password
     })

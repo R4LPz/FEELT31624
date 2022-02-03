@@ -1,28 +1,27 @@
 const Sequelize  = require('sequelize')
 const db = require('../config/database')
  
-const User = db.define('users', {
+const Airplane = db.define('airplanes', {
     id:{
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
-    name: {
-        type: Sequelize.STRING,
+    chassis: {
+        type: Sequelize.BIGINT,
         allowNull: false
     },
-    email:{
+    model: {
         type: Sequelize.STRING,
-        allowNull: false
     },
-    password:{
+    brand:{
         type: Sequelize.STRING,
+    },
+    seats: {
+        type: Sequelize.INTEGER,
         allowNull: false
     }
-},{
-    createdAt: false,
-    updatedAt: false
 })
 
-module.exports = User;
+module.exports = Airplane;
