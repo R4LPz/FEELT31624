@@ -3,9 +3,10 @@ const Airport = require("../models/Airport")
 class AirportController{  
     async create(req, res){
         const {name, cnpj, location} = req.body
-        const airportExists = await Airport.findOne({where: {cnpj: cnpj}})
         
         //migrar para service
+        const airportExists = await Airport.findOne({where: {cnpj: cnpj}})
+
         if(!name || !cnpj || !location){
             return res.status(400).send("Dados inválidos!")
         }

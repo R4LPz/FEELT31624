@@ -2,19 +2,14 @@ const Airplane = require('../models/Airplane')
 
 class AirplaneController{
     async create(req,res){
-        const {chassis, model, brand, seats} = req.body
-        const airplaneExists = await Airplane.findOne({where: {chassis: chassis}})
+        const {model, brand, seats} = req.body
 
         //passar validação para service
-        if(!chassis || !seats){
+        if(!seats){
             return res.status(400).send("Dados Inválidos")
         }
-        if(airplaneExists){
-            return res.status(400).send("Airplane já cadastrada")
-        }
 
-        const newAirplane = Airplane.create({
-            chassis: chassis,
+        const newAirplane = await Airplane.create({
             model: model,
             brand: brand,
             seats: seats

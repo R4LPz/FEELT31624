@@ -1,5 +1,6 @@
 const { Sequelize, Model }  = require('sequelize')
-const sequelize = require('../config/database')
+const sequelize = require('../config/database');
+const Flight = require('./Flight');
 
 
 class Airplane extends Model{}
@@ -11,10 +12,6 @@ Airplane.init({
         autoIncrement: true,
         primaryKey: true
     },
-    chassis: {
-        type: Sequelize.BIGINT,
-        allowNull: false
-    },
     model: {
         type: Sequelize.STRING,
     },
@@ -25,6 +22,12 @@ Airplane.init({
         type: Sequelize.INTEGER,
         allowNull: false
     }
-}, { sequelize })
+}, { 
+    sequelize,
+    modelName: 'airplanes'
+})
+
+Airplane.hasMany(Flight)
+Flight.belongsTo(Airplane)
 
 module.exports = Airplane;

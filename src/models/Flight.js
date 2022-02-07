@@ -1,7 +1,6 @@
 const { Sequelize, Model } = require('sequelize')
 const sequelize = require('../config/database')
 
-
 class Flight extends Model{}
 
 Flight.init({
@@ -19,6 +18,9 @@ Flight.init({
         type: Sequelize.DECIMAL(8,2),
         allowNull: false
     }
-},{ sequelize })
+},{ 
+    sequelize,
+    modelName: 'flights' 
+})
 
 module.exports = Flight 

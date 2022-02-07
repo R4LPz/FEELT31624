@@ -19,4 +19,7 @@ router.post("/airline", airline.create)
 router.post("/flight", flight.create)
 router.post("/airplane", airplane.create)
 
+
+router.get("/test/:id", flight.get)
+
 module.exports = router

@@ -23,6 +23,10 @@ Airport.init({
         type: Sequelize.STRING,
         allowNull: false
     }
-}, { sequelize })
+}, { 
+    sequelize,
+    modelName: 'airports'
+})
+
 
 module.exports = Airport
